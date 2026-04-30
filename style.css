@@ -1,0 +1,396 @@
+/* =========================================
+   CONFIGURAÇÕES GERAIS E VARIÁVEIS
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #f1c40f;
+    /* Amarelo Ouro */
+    --bg-dark: #003B5C;
+    /* Azul West Lumens */
+    --bg-card: #3e3e3e;
+    /* Cinza Escuro dos Cards */
+    --accent-blue: #001F3F;
+    /* Azul Marinho das Barras/Hover */
+    --text-light: #ffffff;
+    --text-gray: #b1aeae;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    scroll-behavior: smooth;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* =========================================
+   HEADER E NAVEGAÇÃO
+   ========================================= */
+header {
+    background: rgba(0, 59, 92, 0.95);
+    padding: 15px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.logo span {
+    color: var(--primary-color);
+}
+
+.logo-img {
+    height: 50px;
+    width: auto;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+
+.nav-links li a {
+    color: var(--text-light);
+    text-decoration: none;
+    margin-left: 30px;
+    transition: 0.3s;
+    font-weight: 500;
+}
+
+.nav-links li a:hover {
+    color: var(--primary-color);
+}
+
+.btn-nav {
+    background: var(--primary-color);
+    color: var(--bg-dark) !important;
+    padding: 8px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* =========================================
+   HERO SECTION
+   ========================================= */
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(0, 59, 92, 0.7), rgba(0, 0, 0, 0.7)), url('img/Fundo.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+}
+
+.hero-text h1 {
+    font-size: 3.5rem;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.hero-text p {
+    font-size: 1.2rem;
+    color: var(--text-gray);
+    margin-bottom: 30px;
+    max-width: 600px;
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: var(--bg-dark);
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.btn-secondary {
+    border: 2px solid var(--text-light);
+    color: var(--text-light);
+    padding: 13px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    display: inline-block;
+    margin-left: 15px;
+    transition: 0.3s;
+}
+
+/* =========================================
+   SEÇÃO DE SERVIÇOS (CORRIGIDA)
+   ========================================= */
+.services {
+    padding: 100px 0;
+    background-color: var(--bg-dark);
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 60px;
+}
+
+.services-wrapper {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    align-items: stretch;
+    /* Garante que todos tenham a mesma altura na linha */
+}
+
+.service-card-item {
+    background-color: var(--bg-card);
+    padding: 40px 30px;
+    border-radius: 15px;
+    width: 320px;
+    min-height: 400px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.service-icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 25px;
+}
+
+.service-card-title {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: var(--text-light);
+}
+
+.service-text {
+    color: var(--text-gray);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Efeito Hover do Card (Fica azul e sobe) */
+.service-card-item:hover {
+    transform: translateY(-10px);
+    background-color: var(--accent-blue);
+    border-color: var(--primary-color);
+}
+
+.service-card-item:hover .service-text {
+    color: var(--text-light);
+}
+
+/* =========================================
+   SEÇÃO SOBRE
+   ========================================= */
+.about {
+    padding: 100px 0;
+    background-color: #024166;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.about-image img {
+    width: 100%;
+    border-radius: 20px;
+    border: 2px solid var(--primary-color);
+}
+
+.about-list {
+    list-style: none;
+    margin-top: 25px;
+}
+
+.about-list li {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.about-list i {
+    color: var(--primary-color);
+}
+
+/* =========================================
+   SEÇÃO CONTATO (DUAS COLUNAS)
+   ========================================= */
+.contact {
+    padding: 100px 0;
+}
+
+.contact-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+/* Coluna Esquerda: Informações */
+.contact-left {
+    flex: 1;
+    min-width: 300px;
+}
+
+.contact-left h3 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.div-contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+/* Estilo das Barras Azuis de Contato */
+.contact-bar-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    background-color: var(--accent-blue);
+    color: var(--primary-color);
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: 0.3s;
+    border: 1px solid transparent;
+}
+
+.contact-bar-link i {
+    font-size: 1.4rem;
+    margin-right: 15px;
+}
+
+.contact-bar-link:hover {
+    background-color: #002e5e;
+    transform: translateX(5px);
+    border-color: var(--primary-color);
+}
+
+/* Coluna Direita: Formulário */
+.contact-right {
+    flex: 0 0 450px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    border-radius: 15px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    background-color: #333;
+    border: 1px solid #555;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 1rem;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+.contact-form button {
+    background: var(--primary-color);
+    color: var(--bg-dark);
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.contact-form button:hover {
+    filter: brightness(1.1);
+}
+
+/* =========================================
+   FOOTER
+   ========================================= */
+footer {
+    padding: 40px 0;
+    text-align: center;
+    border-top: 1px solid #333;
+}
+
+/* =========================================
+   RESPONSIVIDADE
+   ========================================= */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .hero-text h1 {
+        font-size: 2.5rem;
+    }
+
+    .about-grid,
+    .contact-wrapper {
+        flex-direction: column;
+    }
+
+    .contact-right {
+        flex: 1 0 100%;
+        width: 100%;
+    }
+
+    .hero-text {
+        text-align: center;
+    }
+
+    .btn-secondary {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+}
