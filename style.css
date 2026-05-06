@@ -394,3 +394,63 @@ footer {
         margin-top: 10px;
     }
 }
+
+/* Container da imagem para garantir o corte correto */
+.service-image-container {
+    width: 100%;
+    height: 180px;
+    /* Altura da foto dentro do card */
+    overflow: hidden;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* A imagem em si */
+.service-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Faz a foto preencher o espaço sem achatar */
+    transition: transform 0.5s ease;
+}
+
+/* Efeito de zoom na imagem quando passar o mouse no card */
+.service-card-item:hover .service-card-img {
+    transform: scale(1.1);
+}
+
+/* Ajuste no card para acomodar a imagem */
+.service-card-item {
+    padding: 20px;
+    /* Reduzi um pouco o padding para a imagem respirar melhor */
+    min-height: 480px;
+    /* Aumentei a altura mínima para caber a foto */
+    justify-content: flex-start;
+    /* Alinha tudo no topo */
+}
+
+/* Cria a animação chamada 'pulsa-brilho' */
+@keyframes pulsa-brilho {
+    0% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 0px var(--primary-color));
+    }
+
+    50% {
+        transform: scale(1.05);
+        /* Aumenta levemente */
+        filter: drop-shadow(0 0 10px var(--primary-color));
+        /* Brilha dourado */
+    }
+
+    100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 0px var(--primary-color));
+    }
+}
+
+/* Aplica a animação na classe da sua logo */
+.logo-img {
+    animation: pulsa-brilho 3s infinite ease-in-out;
+    /* Repete para sempre */
+}
