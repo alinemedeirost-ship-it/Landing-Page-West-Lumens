@@ -1,456 +1,517 @@
-/* =========================================
-   CONFIGURAÇÕES GERAIS E VARIÁVEIS
-   ========================================= */
+/* --- CONFIGURAÇÕES GERAIS & VARIÁVEIS --- */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 :root {
-    --primary-color: #f1c40f;
-    /* Amarelo Ouro */
-    --bg-dark: #003B5C;
-    /* Azul West Lumens */
-    --bg-card: #3e3e3e;
-    /* Cinza Escuro dos Cards */
-    --accent-blue: #001F3F;
-    /* Azul Marinho das Barras/Hover */
-    --text-light: #ffffff;
-    --text-gray: #b1aeae;
+  --primary-color: #facc15; /* Amarelo Ouro Destaque */
+  --bg-dark: #073a5a;       /* Azul Escuro Oficial */
+  --bg-card: #073a5a;
+  --text-light: #ffffff;
+  --text-gray: #cbd5e1;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    background-color: var(--bg-dark);
-    color: var(--text-light);
-    scroll-behavior: smooth;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 .container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-/* =========================================
-   HEADER E NAVEGAÇÃO
-   ========================================= */
+/* --- HEADER & NAVBAR --- */
 header {
-    background: rgba(0, 59, 92, 0.95);
-    padding: 15px 0;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(7, 58, 90, 0.95);
+  padding: 15px 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
 }
 
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 1.8rem;
-    font-weight: bold;
-    letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: bold;
+  font-size: 1.8rem;
+  color: var(--text-light);
+  text-decoration: none;
 }
 
-.logo span {
-    color: var(--primary-color);
+/* Animação Pulsante na Logo Circular */
+@keyframes logoPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(250, 204, 21, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(250, 204, 21, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(250, 204, 21, 0);
+  }
 }
 
 .logo-img {
-    height: 50px;
-    width: auto;
+  height: 48px;
+  width: 48px;
+  border-radius: 50%;
+  border: 2px solid var(--primary-color);
+  animation: logoPulse 2.5s infinite ease-in-out;
+  object-fit: cover;
 }
 
 .nav-links {
-    display: flex;
-    list-style: none;
-    align-items: center;
+  display: flex;
+  list-style: none;
+  align-items: center;
 }
 
 .nav-links li a {
-    color: var(--text-light);
-    text-decoration: none;
-    margin-left: 30px;
-    transition: 0.3s;
-    font-weight: 500;
+  color: var(--text-light);
+  text-decoration: none;
+  margin-left: 30px;
+  transition: color 0.3s ease;
+  font-weight: 500;
 }
 
 .nav-links li a:hover {
-    color: var(--primary-color);
+  color: var(--primary-color);
 }
 
 .btn-nav {
-    background: var(--primary-color);
-    color: var(--bg-dark) !important;
-    padding: 8px 20px;
-    border-radius: 5px;
-    font-weight: bold;
+  background: var(--primary-color);
+  color: var(--bg-dark) !important;
+  padding: 8px 20px;
+  border-radius: 6px;
+  font-weight: bold;
 }
 
-/* =========================================
-   HERO SECTION
-   ========================================= */
+/* --- HERO SECTION (INÍCIO COM EFEITO DE ZOOM SEGURO) --- */
 .hero {
-    height: 100vh;
-    background: linear-gradient(rgba(0, 59, 92, 0.7), rgba(0, 0, 0, 0.7)), url('img/Fundo.png');
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  padding-top: 80px;
+  overflow: hidden; /* Evita que a imagem vaze nos cards */
+  z-index: 1;
+}
+
+/* Camada da imagem de fundo separada para animação de zoom */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(7, 58, 90, 0.75), rgba(0, 0, 0, 0.75)),
+              url('img/Fundo.png') center/cover no-repeat;
+  transition: transform 0.8s ease-in-out;
+  z-index: -1;
+}
+
+/* Efeito de Zoom Suave ao passar o mouse no topo */
+.hero:hover::before {
+  transform: scale(1.05);
 }
 
 .hero-text h1 {
-    font-size: 3.5rem;
-    line-height: 1.2;
-    margin-bottom: 20px;
+  font-size: 3.2rem;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  color: var(--text-light);
 }
 
 .hero-text p {
-    font-size: 1.2rem;
-    color: var(--text-gray);
-    margin-bottom: 30px;
-    max-width: 600px;
+  font-size: 1.15rem;
+  color: var(--text-gray);
+  margin-bottom: 30px;
+  max-width: 600px;
 }
 
 .btn-primary {
-    background: var(--primary-color);
-    color: var(--bg-dark);
-    padding: 15px 30px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    display: inline-block;
-    transition: 0.3s;
+  background: var(--primary-color);
+  color: var(--bg-dark);
+  padding: 14px 28px;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  margin-right: 15px;
+  display: inline-block;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: #eab308;
+  transform: translateY(-2px);
 }
 
 .btn-secondary {
-    border: 2px solid var(--text-light);
-    color: var(--text-light);
-    padding: 13px 30px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    display: inline-block;
-    margin-left: 15px;
-    transition: 0.3s;
+  border: 2px solid var(--text-light);
+  color: var(--text-light);
+  padding: 12px 28px;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  display: inline-block;
+  transition: all 0.2s ease;
 }
 
-/* =========================================
-   SEÇÃO DE SERVIÇOS (CORRIGIDA)
-   ========================================= */
-.services {
-    padding: 100px 0;
-    background-color: var(--bg-dark);
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
 }
 
-.section-title {
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 60px;
+/* --- SEÇÃO SERVIÇOS --- */
+.services-section, .services {
+  padding: 90px 20px;
+  background-color: #ecf0f2; /* Azul sutilmente escuro para separação */
+  position: relative;
+  z-index: 2;
+}
+.services-title {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 50px;
+  color: #073a5a !important;
 }
 
-.services-wrapper {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 30px;
-    align-items: stretch;
-    /* Garante que todos tenham a mesma altura na linha */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
 }
 
-.service-card-item {
-    background-color: var(--bg-card);
-    padding: 40px 30px;
-    border-radius: 15px;
-    width: 320px;
-    min-height: 400px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+.service-card {
+  background-color: var(--bg-dark);
+  border-radius: 12px;
+  padding: 30px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-.service-icon {
-    font-size: 3rem;
-    color: var(--primary-color);
-    margin-bottom: 25px;
+.service-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--primary-color);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
-.service-card-title {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-    color: var(--text-light);
+.card-icon {
+  width: 50px;
+  height: 50px;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+  transition: background-color 0.3s ease;
 }
 
-.service-text {
-    color: var(--text-gray);
-    font-size: 1rem;
-    line-height: 1.6;
+.card-icon i {
+  font-size: 24px;
+  color: var(--text-light);
 }
 
-/* Efeito Hover do Card (Fica azul e sobe) */
-.service-card-item:hover {
-    transform: translateY(-10px);
-    background-color: var(--accent-blue);
-    border-color: var(--primary-color);
+.service-card:hover .card-icon {
+  background-color: var(--primary-color);
 }
 
-.service-card-item:hover .service-text {
-    color: var(--text-light);
+.service-card:hover .card-icon i {
+  color: var(--bg-dark);
 }
 
-/* =========================================
-   SEÇÃO SOBRE
-   ========================================= */
+.service-card h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-light);
+  margin-bottom: 10px;
+}
+
+.service-card p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--text-gray);
+}
+
+/* --- SEÇÃO NOSSA HISTÓRIA / SOBRE --- */
 .about {
-    padding: 100px 0;
-    background-color: #024166;
+  padding: 90px 0;
+  background-color: var(--bg-dark);
+  position: relative;
+  z-index: 2;
 }
 
 .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 50px;
-    align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
 }
 
 .about-image img {
-    width: 100%;
-    border-radius: 20px;
-    border: 2px solid var(--primary-color);
+  width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  border: 2px solid var(--primary-color);
+}
+
+.section-title-left {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  color: var(--text-light);
+  position: relative;
+}
+
+.section-title-left::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: var(--primary-color);
+  margin-top: 10px;
+  border-radius: 2px;
+}
+
+/* Força os textos da História a ficarem brancos */
+.about-text p, 
+.about-content p {
+  color: #ffffff !important;
+  margin-bottom: 20px;
+  font-size: 1.05rem;
+  line-height: 1.7;
 }
 
 .about-list {
-    list-style: none;
-    margin-top: 25px;
+  list-style: none;
+  margin-top: 25px;
 }
 
 .about-list li {
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  color: var(--text-light);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 500;
 }
 
 .about-list i {
-    color: var(--primary-color);
+  color: var(--primary-color);
+  font-size: 1.2rem;
 }
 
-/* =========================================
-   SEÇÃO CONTATO (DUAS COLUNAS)
-   ========================================= */
-.contact {
-    padding: 100px 0;
+/* --- SEÇÃO DE CONTATO --- */
+.contact-section, .contact {
+  padding: 90px 20px;
+  background-color: #052c44;
+  position: relative;
+  z-index: 2;
 }
 
-.contact-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 50px;
-    flex-wrap: wrap;
+.contact-card {
+  max-width: 950px;
+  margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
 }
 
-/* Coluna Esquerda: Informações */
-.contact-left {
-    flex: 1;
-    min-width: 300px;
+.contact-info h3 {
+  color: var(--text-light);
+  font-size: 1.5rem;
+  margin-bottom: 12px;
 }
 
-.contact-left h3 {
-    font-size: 2rem;
-    margin-bottom: 15px;
+.contact-info p {
+  color: var(--text-gray);
+  font-size: 0.95rem;
+  margin-bottom: 25px;
 }
 
-.div-contact-info {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-top: 30px;
+.contact-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-/* Estilo das Barras Azuis de Contato */
-.contact-bar-link {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    background-color: var(--accent-blue);
-    color: var(--primary-color);
-    padding: 12px 20px;
-    border-radius: 8px;
-    font-weight: 600;
-    transition: 0.3s;
-    border: 1px solid transparent;
+.btn-whatsapp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: #25D366;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 12px 20px;
+  border-radius: 8px;
+  transition: transform 0.2s ease, background 0.2s ease;
 }
 
-.contact-bar-link i {
-    font-size: 1.4rem;
-    margin-right: 15px;
+.btn-whatsapp:hover {
+  background-color: #20ba5a;
+  transform: translateY(-2px);
 }
 
-.contact-bar-link:hover {
-    background-color: #002e5e;
-    transform: translateX(5px);
-    border-color: var(--primary-color);
+.btn-instagram {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: rgba(255, 255, 255, 0.08);
+  color: var(--primary-color);
+  border: 1px solid rgba(250, 204, 21, 0.3);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 12px 20px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
 }
 
-/* Coluna Direita: Formulário */
-.contact-right {
-    flex: 0 0 450px;
-    background: rgba(255, 255, 255, 0.05);
-    padding: 30px;
-    border-radius: 15px;
+.btn-instagram:hover {
+  background-color: rgba(250, 204, 21, 0.15);
+  transform: translateY(-2px);
 }
 
 .contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
 .contact-form input,
 .contact-form textarea {
-    width: 100%;
-    padding: 15px;
-    background-color: #333;
-    border: 1px solid #555;
-    border-radius: 5px;
-    color: #fff;
-    font-size: 1rem;
+  width: 100%;
+  padding: 12px 16px;
+  background-color: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  color: #ffffff;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.contact-form textarea {
+  height: 120px;
+  resize: vertical;
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
-    border-color: var(--primary-color);
-    outline: none;
+  border-color: var(--primary-color);
 }
 
-.contact-form button {
-    background: var(--primary-color);
-    color: var(--bg-dark);
-    padding: 15px;
-    border: none;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
+.btn-submit {
+  background-color: var(--primary-color);
+  color: var(--bg-dark);
+  font-weight: 700;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
 }
 
-.contact-form button:hover {
-    filter: brightness(1.1);
+.btn-submit:hover {
+  background-color: #eab308;
+  transform: translateY(-2px);
 }
 
-/* =========================================
-   FOOTER
-   ========================================= */
+/* --- FOOTER & CRÉDITOS --- */
 footer {
-    padding: 40px 0;
-    text-align: center;
-    border-top: 1px solid #333;
+  padding: 30px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  background-color: var(--bg-dark);
+  position: relative;
+  z-index: 2;
 }
 
-/* =========================================
-   RESPONSIVIDADE
-   ========================================= */
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.9rem;
+  color: var(--text-gray);
+}
+
+.footer-credits a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.footer-credits a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+/* --- RESPONSIVIDADE (TABLETS E CELULARES) --- */
+@media (max-width: 900px) {
+  .about-grid, 
+  .contact-card {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
 @media (max-width: 768px) {
-    .nav-links {
-        display: none;
-    }
+  .nav-links {
+    display: none;
+  }
 
-    .hero-text h1 {
-        font-size: 2.5rem;
-    }
+  .hero-text h1 {
+    font-size: 2.4rem;
+  }
 
-    .about-grid,
-    .contact-wrapper {
-        flex-direction: column;
-    }
+  .section-title, 
+  .section-title-left {
+    font-size: 1.8rem;
+  }
 
-    .contact-right {
-        flex: 1 0 100%;
-        width: 100%;
-    }
+  .section-title-left::after {
+    margin: 10px auto 0 auto;
+  }
 
-    .hero-text {
-        text-align: center;
-    }
+  .about-grid {
+    text-align: center;
+  }
 
-    .btn-secondary {
-        margin-left: 0;
-        margin-top: 10px;
-    }
-}
-
-/* Container da imagem para garantir o corte correto */
-.service-image-container {
-    width: 100%;
-    height: 180px;
-    /* Altura da foto dentro do card */
-    overflow: hidden;
-    border-radius: 10px;
-    margin-bottom: 20px;
-}
-
-/* A imagem em si */
-.service-card-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    /* Faz a foto preencher o espaço sem achatar */
-    transition: transform 0.5s ease;
-}
-
-/* Efeito de zoom na imagem quando passar o mouse no card */
-.service-card-item:hover .service-card-img {
-    transform: scale(1.1);
-}
-
-/* Ajuste no card para acomodar a imagem */
-.service-card-item {
-    padding: 20px;
-    /* Reduzi um pouco o padding para a imagem respirar melhor */
-    min-height: 480px;
-    /* Aumentei a altura mínima para caber a foto */
-    justify-content: flex-start;
-    /* Alinha tudo no topo */
-}
-
-/* Cria a animação chamada 'pulsa-brilho' */
-@keyframes pulsa-brilho {
-    0% {
-        transform: scale(1);
-        filter: drop-shadow(0 0 0px var(--primary-color));
-    }
-
-    50% {
-        transform: scale(1.05);
-        /* Aumenta levemente */
-        filter: drop-shadow(0 0 10px var(--primary-color));
-        /* Brilha dourado */
-    }
-
-    100% {
-        transform: scale(1);
-        filter: drop-shadow(0 0 0px var(--primary-color));
-    }
-}
-
-/* Aplica a animação na classe da sua logo */
-.logo-img {
-    animation: pulsa-brilho 3s infinite ease-in-out;
-    /* Repete para sempre */
+  .about-list li {
+    justify-content: center;
+  }
 }

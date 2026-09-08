@@ -5,11 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>West Lumens | Iluminação e Serviços Elétricos</title>
-
-    <!-- Link para o seu CSS principal -->
     <link rel="stylesheet" href="style.css">
-
-    <!-- Link ÚNICO e CORRETO para o Font Awesome (Ícones) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Cole isto dentro do seu <head> ... </head> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
@@ -29,6 +27,7 @@
                         class="btn-nav" target="_blank">Orçamento</a></li>
             </ul>
         </nav>
+        </nav>
     </header>
 
     <section id="home" class="hero">
@@ -43,66 +42,66 @@
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- === SEÇÃO DE SERVIÇOS (ESTRUTURA UNIFICADA E CORRIGIDA) === -->
-    <section id="servicos" class="services">
-        <div class="container">
-            <h2 class="section-title">Nossos Serviços</h2>
-
-            <div class="services-wrapper">
-
-                <div class="service-card-item">
-                    <div class="service-image-container">
-                        <img src="img/Card.jpg" alt="Serviços Elétricos" class="service-card-img">
-                    </div>
-                    <i class="fas fa-plug service-icon"></i>
-                    <h3 class="service-card-title">Soluções elétricas completas</h3>
-                    <p class="service-text">Planejamento especializado para criar a iluminação ideal, unindo estética,
-                        conforto e economia de energia.</p>
-                </div>
-
-                <div class="service-card-item">
-                    <div class="service-image-container">
-                        <img src="img/card 4.jpg" alt="Instalações Elétricas" class="service-card-img">
-                    </div>
-                    <i class="fas fa-bolt service-icon"></i>
-                    <h3 class="service-card-title">Instalações Elétricas</h3>
-                    <p class="service-text">Execução completa de projetos elétricos residenciais e comerciais com foco
-                        total na segurança e normas técnicas.</p>
-                </div>
-
-                <div class="service-card-item">
-                    <div class="service-image-container">
-                        <img src="img/card 2.jpg" alt="Projetos de Iluminação" class="service-card-img">
-                    </div>
-                    <i class="fas fa-lightbulb service-icon"></i>
-                    <h3 class="service-card-title">Projetos de Iluminação</h3>
-                    <p class="service-text">Soluções modernas e eficientes.</p>
-                </div>
-
-                <div class="service-card-item">
-                    <div class="service-image-container">
-                        <img src="img/card 5.jpg" alt="Manutenção de Ar Condicionado" class="service-card-img">
-                    </div>
-                    <i class="fas fa-snowflake service-icon"></i>
-                    <h3 class="service-card-title">Ar Condicionado</h3>
-                    <p class="service-text">Instalação e manutenção para o seu conforto.</p>
-                </div>
-
-                <div class="service-card-item">
-                    <div class="service-image-container">
-                        <img src="img/card 6.jpg" alt="Manutenção e Reparos" class="service-card-img">
-                    </div>
-                    <i class="fas fa-tools service-icon"></i>
-                    <h3 class="service-card-title">Manutenção e Reparos</h3>
-                    <p class="service-text">Assistência técnica rápida para quadros de energia, fiação, tomadas e troca
-                        de sistemas de iluminação.</p>
-                </div>
-
-            </div>
+    </section><section id="servicos" class="services-section">
+  <div class="container">
+    <h2 class="services-title">Do interruptor ao painel, tudo no lugar certo.</h2>
+    
+    <div class="services-grid">
+      <!-- Card 1 -->
+      <div class="service-card">
+        <div class="card-icon">
+          <i class="fa-solid fa-plug"></i>
         </div>
-    </section>
+        <h3>Tomadas e interruptores</h3>
+        <p>Instalação, reparo e realocação com acabamento limpo e alinhado.</p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="service-card">
+        <div class="card-icon">
+          <i class="fa-solid fa-bolt"></i>
+        </div>
+        <h3>Painel elétrico</h3>
+        <p>Troca ou upgrade do quadro, com disjuntores e proteção corretos.</p>
+      </div>
+
+      <!-- Card 3 (Atualizado) -->
+<div class="service-card">
+  <div class="card-icon">
+    <i class="fa-solid fa-snowflake"></i>
+  </div>
+  <h3>Ar-condicionado (Split e Janela)</h3>
+  <p>Instalação e manutenção preventiva e corretiva para aparelhos de ar-condicionado.</p>
+</div>
+
+      <!-- Card 4 -->
+      <div class="service-card">
+        <div class="card-icon">
+          <i class="fa-solid fa-fan"></i>
+        </div>
+        <h3>Luminárias e ventiladores</h3>
+        <p>Instalação e reparo de luminárias e ventiladores de teto.</p>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="service-card">
+        <div class="card-icon">
+          <i class="fa-solid fa-lightbulb"></i>
+        </div>
+        <h3>Iluminação externa</h3>
+        <p>Pontos de luz para fachada, quintal, garagem e área externa.</p>
+      </div>
+
+      <!-- Card: Reformas Elétricas -->
+<div class="service-card">
+  <div class="card-icon">
+    <i class="fa-solid fa-screwdriver-wrench"></i>
+  </div>
+  <h3>Reformas elétricas</h3>
+  <p>Restauração e reformas completas, residencial e comercial.</p>
+</div>
+  </div>
+</section>
     <section id="sobre" class="about">
         <div class="container about-grid">
             <div class="about-image">
@@ -125,52 +124,60 @@
             </div>
         </div>
     </section>
+    <!-- index.html -->
+  <section id="contato" class="contact-section">
+      <div class="container">
+        <h2 class="section-title">Fale Conosco</h2>
+        
+        <!-- Card Principal Unificado -->
+        <div class="contact-card">
+          
+          <!-- Coluna Esquerda: Informações e Botões -->
+          <div class="contact-info">
+            <h3>Solicite um orçamento gratuito</h3>
+            <p>Estamos prontos para iluminar o seu próximo projeto com eficiência e segurança.</p>
 
-    <section id="contato" class="contact">
-        <div class="container">
-            <h2 class="section-title">Fale Conosco</h2>
+            <div class="contact-buttons">
+              <a href="https://wa.me/5521967133853" target="_blank" class="btn-whatsapp">
+                <i class="fab fa-whatsapp"></i> Falar no WhatsApp
+              </a>
 
-            <div class="contact-wrapper">
-                <div class="contact-left">
-                    <h3 class="contact-sub-title">Solicite um orçamento gratuito</h3>
-                    <p class="contact-text">Estamos prontos para iluminar o seu próximo projeto.</p>
-
-                    <div class="div-contact-info">
-                        <a href="tel:21967133853" class="contact-bar-link">
-                            <i class="fab fa-whatsapp"></i> <span>(21) 96713-3853</span>
-                        </a>
-
-                        <a href="https://www.instagram.com/westlumens" target="_blank" rel="noopener noreferrer"
-                            class="contact-bar-link">
-                            <i class="fab fa-instagram"></i> <span>Siga @westlumens</span>
-                        </a>
-
-                        <a href="mailto:westlumens@gmail.com" class="contact-bar-link">
-                            <i class="fas fa-envelope"></i> <span>westlumens@gmail.com</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="contact-right">
-                    <form class="contact-form">
-                        <input type="text" placeholder="Seu Nome" required>
-                        <input type="email" placeholder="Seu E-mail" required>
-                        <textarea placeholder="Como podemos ajudar?" rows="5" required></textarea>
-                        <button type="submit" class="btn-primary">Enviar Mensagem</button>
-                    </form>
-                </div>
+              <a href="https://www.instagram.com/westlumens" target="_blank" rel="noopener" class="btn-instagram">
+                <i class="fab fa-instagram"></i> Siga @westlumens
+              </a>
             </div>
+          </div>
+
+          <!-- Coluna Direita: Formulário -->
+          <div class="contact-form-wrapper">
+            <form class="contact-form">
+              <input type="text" placeholder="Seu Nome" required />
+              <input type="email" placeholder="Seu E-mail" required />
+              <textarea placeholder="Como podemos ajudar?" rows="4" required></textarea>
+              <button type="submit" class="btn-submit">Enviar Mensagem</button>
+            </form>
+          </div>
+
         </div>
+      </div>
+    </section>
+        <!-- === FIM DA CAIXA DIREITA === -->
+
+        </div>
+        <!-- FIM DO CONTACT-WRAPPER -->
+
+        </div>
+        <!-- FIM DO CONTAINER -->
     </section>
 
     <footer>
-        <div class="container footer-content">
-            <p>&copy; 2026 West Lumens - Todos os direitos reservados.</p>
-            <div class="socials">
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-whatsapp"></i></a>
-            </div>
-        </div>
-    </footer>
+  <div class="container footer-content">
+    <p>&copy; 2026 West Lumens. Todos os direitos reservados.</p>
+    <p class="footer-credits">
+      Criado por <a href="https://www.instagram.com/medeiross_tech" target="_blank" rel="noopener">@medeiross_tech</a>
+    </p>
+  </div>
+</footer>
 
 </body>
 
