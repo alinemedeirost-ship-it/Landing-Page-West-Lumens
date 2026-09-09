@@ -104,49 +104,88 @@ header .container {
   font-weight: bold;
 }
 
-/* --- HERO SECTION (INÍCIO COM EFEITO DE ZOOM SEGURO) --- */
+/* --- HERO SECTION (IMAGEM ORIGINAL COM EFEITO DE IMERSÃO 3D) --- */
 .hero {
   position: relative;
-  height: 100vh;
-  min-height: 600px;
+  min-height: 100vh;
   display: flex;
   align-items: center;
-  padding-top: 80px;
-  overflow: hidden; /* Evita que a imagem vaze nos cards */
+  justify-content: center;
+  overflow: hidden;
+  perspective: 1000px;
+  background-color: var(--bg-dark);
   z-index: 1;
 }
 
-/* Camada da imagem de fundo separada para animação de zoom */
+/* Camada da imagem de fundo local com efeito de Zoom e Parallax */
 .hero::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(rgba(7, 58, 90, 0.75), rgba(0, 0, 0, 0.75)),
-              url('img/Fundo.png') center/cover no-repeat;
-  transition: transform 0.8s ease-in-out;
+  top: -5%;
+  left: -5%;
+  width: 110%;
+  height: 110%;
+  background: linear-gradient(135deg, rgba(7, 58, 90, 0.75) 0%, rgba(5, 44, 68, 0.85) 100%),
+              url('img/fundo.png') center/cover no-repeat;
+  background-attachment: fixed;
+  transition: transform 0.8s cubic-bezier(0.15, 1, 0.3, 1);
+  will-change: transform;
   z-index: -1;
 }
 
-/* Efeito de Zoom Suave ao passar o mouse no topo */
-.hero:hover::before {
-  transform: scale(1.05);
+/* Brilho Dourado Pulsante de Fundo */
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(250, 204, 21, 0.2) 0%, rgba(7, 58, 90, 0) 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  pointer-events: none;
+  animation: pulseGlow 6s infinite alternate ease-in-out;
 }
 
-.hero-text h1 {
+.hero .container,
+.hero-text,
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  transform: translateZ(30px);
+  transition: transform 0.5s ease;
+}
+
+/* Efeito de Zoom 3D ao passar o mouse */
+.hero:hover::before {
+  transform: scale(1.05) rotateX(1deg) rotateY(-1deg);
+}
+
+.hero:hover .container {
+  transform: translateZ(60px) translateY(-4px);
+}
+
+@keyframes pulseGlow {
+  0% { transform: translate(-50%, -50%) scale(0.85); opacity: 0.4; }
+  100% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.8; }
+}
+
+.hero-text h1,
+.hero-title {
   font-size: 3.2rem;
   line-height: 1.2;
   margin-bottom: 20px;
   color: var(--text-light);
 }
 
-.hero-text p {
+.hero-text p,
+.hero-subtitle {
   font-size: 1.15rem;
   color: var(--text-gray);
-  margin-bottom: 30px;
-  max-width: 600px;
+  margin: 0 auto 30px auto;
+  max-width: 650px;
 }
 
 .btn-primary {
@@ -183,12 +222,15 @@ header .container {
 }
 
 /* --- SEÇÃO SERVIÇOS --- */
-.services-section, .services {
-  padding: 90px 20px;
-  background-color: #ecf0f2; /* Azul sutilmente escuro para separação */
+.services-section {
+  padding: 80px 20px 60px 20px;
+  margin-bottom: 60px; /* <--- ADICIONE OU ALTERE ESTA LINHA */
+  background-color: #073a5a;
   position: relative;
   z-index: 2;
 }
+
+
 .services-title {
   text-align: center;
   font-size: 2.2rem;
@@ -200,24 +242,21 @@ header .container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 24px;
-}
+} /* Fecha o .services-grid */
 
+/* --- CARDS DE SERVIÇOS --- */
 .service-card {
-  background-color: var(--bg-dark);
-  border-radius: 12px;
+  background-color: #052c44 !important; /* Azul da seção de avaliações */
+  border-radius: 16px;
   padding: 30px 24px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
 .service-card:hover {
   transform: translateY(-6px);
-  border-color: var(--primary-color);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  border-color: #facc15;
 }
 
 .card-icon {
@@ -234,11 +273,47 @@ header .container {
 
 .card-icon i {
   font-size: 24px;
-  color: var(--text-light);
+  color: #facc15;
 }
 
 .service-card:hover .card-icon {
-  background-color: var(--primary-color);
+  background-color: #facc15;
+}
+
+.service-card:hover .card-icon i {
+  color: #073a5a;
+}
+
+.service-card h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #ffffff !important;
+  margin-bottom: 10px;
+}
+
+.service-card p {
+  font-size: 0.95rem;
+  color: #e2e8f0 !important;
+}
+  .service-card h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #ffffff !important;
+  margin-bottom: 10px;
+}
+
+.service-card p {
+  font-size: 0.95rem;
+  color: #e2e8f0 !important;
+}
+
+.card-icon i {
+  font-size: 24px;
+  color: #facc15;
+}
+
+.service-card:hover .card-icon {
+  background-color: #facc15;
 }
 
 .service-card:hover .card-icon i {
@@ -256,6 +331,96 @@ header .container {
   font-size: 0.95rem;
   line-height: 1.5;
   color: var(--text-gray);
+}
+.reviews-section {
+  padding: 100px 20px 80px 20px; /* <--- ALTERE A LINHA DO PADDING (linha 336) */
+  background-color: #052c44;
+  color: #ffffff;
+  position: relative;
+  z-index: 2;
+}
+
+.reviews-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.reviews-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.google-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(250, 204, 21, 0.1);
+  border: 1px solid rgba(250, 204, 21, 0.3);
+  padding: 8px 18px;
+  border-radius: 20px;
+  color: #facc15;
+  font-size: 0.95rem;
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.review-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.review-card:hover {
+  transform: translateY(-8px);
+  border-color: #facc15;
+  box-shadow: 0 15px 35px rgba(250, 204, 21, 0.15);
+}
+
+.stars {
+  color: #facc15;
+  font-size: 1.3rem;
+  margin-bottom: 16px;
+  letter-spacing: 3px;
+}
+
+.review-text {
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: #e2e8f0;
+  font-style: italic;
+  margin-bottom: 24px;
+}
+
+.client-info {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 16px;
+}
+
+.client-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 4px 0;
+}
+
+.client-role {
+  font-size: 0.85rem;
+  color: #94a3b8;
 }
 
 /* --- SEÇÃO NOSSA HISTÓRIA / SOBRE --- */
@@ -297,7 +462,6 @@ header .container {
   border-radius: 2px;
 }
 
-/* Força os textos da História a ficarem brancos */
 .about-text p, 
 .about-content p {
   color: #ffffff !important;
@@ -494,8 +658,13 @@ footer {
     display: none;
   }
 
-  .hero-text h1 {
-    font-size: 2.4rem;
+  .hero::before {
+    background-attachment: scroll; /* Otimizado para rolagem suave em telas touch */
+  }
+
+  .hero-text h1,
+  .hero-title {
+    font-size: 2.2rem;
   }
 
   .section-title, 
@@ -514,4 +683,17 @@ footer {
   .about-list li {
     justify-content: center;
   }
+
+  .reviews-section {
+    padding: 50px 15px;
+  }
+
+  .reviews-title {
+    font-size: 1.75rem;
+  }
+
+  .reviews-grid {
+    grid-template-columns: 1fr;
+  }
 }
+

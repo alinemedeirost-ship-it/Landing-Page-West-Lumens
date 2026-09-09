@@ -30,19 +30,19 @@
         </nav>
     </header>
 
-    <section id="home" class="hero">
-        <div class="container hero-grid">
-            <div class="hero-text">
-                <h1>Iluminação que transforma ambientes.</h1>
-                <p>Especialistas em projetos luminotécnicos e manutenção elétrica de alta performance para sua
-                    residência ou empresa.</p>
-                <div class="hero-btns">
-                    <a href="#contato" class="btn-primary">Solicitar Orçamento</a>
-                    <a href="#servicos" class="btn-secondary">Nossos Serviços</a>
-                </div>
-            </div>
-        </div>
-    </section><section id="servicos" class="services-section">
+    <section class="hero" id="home">
+  <div class="hero-bg-overlay"></div>
+  <div class="hero-glow"></div>
+  
+  <div class="container hero-content">
+    <h1 class="hero-title">Iluminação que transforma ambientes.</h1>
+    <p class="hero-subtitle">Especialistas em projetos luminotécnicos e manutenção elétrica de alta performance para sua residência ou empresa.</p>
+    <div class="hero-buttons">
+      <a href="#contato" class="btn-primary">Solicitar Orçamento</a>
+      <a href="#servicos" class="btn-secondary">Nossos Serviços</a>
+    </div>
+  </div>
+</section>
   <div class="container">
     <h2 class="services-title">Do interruptor ao painel, tudo no lugar certo.</h2>
     
@@ -100,6 +100,52 @@
   <h3>Reformas elétricas</h3>
   <p>Restauração e reformas completas, residencial e comercial.</p>
 </div>
+  </div> <!-- fecha o services-grid (linha 103) -->
+</div> <!-- ADICIONE ESTA LINHA: fecha o container da seção de serviços -->
+</section> <!-- fecha a section de serviços (linha 104) -->
+
+<!-- --- SEÇÃO AVALIAÇÕES DO GOOGLE --- -->
+<section id="avaliacoes" class="reviews-section">
+  <div class="container">
+    <div class="reviews-header">
+      <h2 class="reviews-title">O que dizem nossos clientes no Google</h2>
+      <div class="google-badge">
+        <i class="fa-brands fa-google"></i>
+        <span>Avaliações <strong>5.0 ★★★★★</strong> no Google</span>
+      </div>
+    </div>
+    
+    <div class="reviews-grid">
+      <!-- Depoimento 1 -->
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Ótimos preços e variedade de marcas de qualidade, além de vender material elétrico também prestam serviços elétricos com qualidade e segurança. Fizeram ótimos serviços na minha casa, confio muito. Super indico."</p>
+        <div class="client-info">
+          <h4 class="client-name">Hortência Medeiros</h4>
+          <span class="client-role">Avaliação no Google</span>
+        </div>
+      </div>
+
+      <!-- Depoimento 2 -->
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Realizaram uma reforma na parte elétrica da casa, que ficou ótimo e os materiais são de primeira linha, fios, disjuntores, tomadas, lâmpadas, caixa de disjuntores, conduites, e os funcionários atendem bem."</p>
+        <div class="client-info">
+          <h4 class="client-name">Eduardo Luiz Luiz</h4>
+          <span class="client-role">Avaliação no Google</span>
+        </div>
+      </div>
+
+      <!-- Depoimento 3 -->
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Serviço de limpeza de ar condicionado split excelente, profissional caprichoso, recomendo."</p>
+        <div class="client-info">
+          <h4 class="client-name">Cláudio Almeida</h4>
+          <span class="client-role">Avaliação no Google</span>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
     <section id="sobre" class="about">
@@ -127,7 +173,7 @@
     <!-- index.html -->
   <section id="contato" class="contact-section">
       <div class="container">
-        <h2 class="section-title">Fale Conosco</h2>
+       <h2 class="section-title" style="text-align: center;">Fale Conosco</h2>
         
         <!-- Card Principal Unificado -->
         <div class="contact-card">
